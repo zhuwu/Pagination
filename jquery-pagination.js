@@ -8,7 +8,7 @@
           nextButton = paginationHolder.find(options.next),
           paginationList = paginationHolder.find(options.pagination),
           visited = 0,
-          current = options.initialPage - 1,
+          current = options.initialPage,
           last = Math.floor((elementList.length - 1) / options.elementPerPage),
           autoPagination = options.auto,
           timeout = options.timeout,
@@ -138,11 +138,11 @@
     elementActiveClass: 'active', // CSS class name to highlight currently showing elements
     prevNextDisabledClass: 'disabled', // CSS class name to disable prev/next page button
     paginationActiveClass: 'current', // CSS class name to highlight current pagination button
-    initialPage: 1, // initial slide number (starts from 1)
-    elementPerPage: 1, // How many elements will appear in one slide
-    circle: false, // Whether cicle slide is enabled.
-    auto: false, // Whether auto slide is turned on.
-    timeout: 2000, // Timeout for auto slide. Unit is ms.
+    initialPage: 0, // initial page number (starts from 0)
+    elementPerPage: 1, // How many elements will appear in one page
+    circle: false, // Whether circular mode is enabled.
+    auto: false, // Whether auto page switching is turned on.
+    timeout: 2000, // Timeout for auto page switching. Unit is ms.
     callback: null // JavaScript callback function after clicked prev/next/pagination buttons
   };
 } (jQuery));
