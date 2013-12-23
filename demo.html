@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pagination Demo</title>
+    <style type="text/css">
+      body { margin: 0; font-family:Helvetica, Arial, sans-serif;}
+      a { text-decoration: none; color: #FFF; }
+      h1 { font-size: 35px; font-weight: bold; }
+      h2 { font-size: 25px; font-weight: bold; }
+      ul { list-style: none; margin: 0; padding: 0; }
+      
+      .wrapper { margin: 20px 40px; }
+      .container1, .container2, .container3, .container4, .container5, .container6, .holder { overflow: hidden; }
+      .container2 .element-list { float: none; }
+      .element-list { padding: 0 10px 0 0; float: left; }
+      .element-list li { background-color: #6A5ACD; width: 380px; height: 200px; font-size: 25px; display: none; }
+      .element-list .active { display: block; }
+      .multi-item-list li { height: 95px; margin-top: 10px; }
+      .multi-item-list .single { margin-top: 0; }
+      .prev-next-holder { float: left; padding: 0 10px 0 0; }
+      .prev, .next { background-color: #444444;  display: table-cell; text-align: center; vertical-align: middle; margin: 0 10px; width: 50px; height: 200px; }
+      .disabled { background-color: #888888; }
+      .pagination-list { margin-left: 60px; }
+      .container2 .pagination-list { margin-left: 0; }
+      .pagination-list li { background-color: #888888;  float: left; margin: 10px 20px 0 0; }
+      .pagination-list a { display: table-cell; text-align: center; vertical-align: middle; width: 30px; height: 30px; }
+      .pagination-list .current { background-color: #444444; }
+    </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="jquery-pagination.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Demo for my simple jQuery pagination plugin</h1>
+      
+      <h2>1. Pagination with previous & next button</h2>
+      <div class="container1">
+        <div class="prev-next-holder">
+          <a class="prev disabled" href="#">&lt;&lt;</a>
+        </div>
+        <ul class="element-list">
+          <li class="active">Page 1</li>
+          <li>Page 2</li>
+          <li>Page 3</li>
+          <li>Page 4</li>
+          <li>Page 5</li>
+          <li>Page 6</li>
+          <li>Page 7</li>
+          <li>Page 8</li>
+        </ul>
+        <div class="prev-next-holder">
+          <a class="next" href="#">&gt;&gt;</a>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('.container1').initPagination({element: '.element-list li'});
+        });
+      </script>
+      
+      <h2>2. Pagination with page buttons</h2>
+      <div class="container2">
+        <ul class="element-list">
+          <li class="active">Page 1</li>
+          <li>Page 2</li>
+          <li>Page 3</li>
+          <li>Page 4</li>
+          <li>Page 5</li>
+          <li>Page 6</li>
+          <li>Page 7</li>
+          <li>Page 8</li>
+        </ul>
+        <ul class="pagination-list">
+          <li><a class="current" href="#">1</a></li>
+          <li><a href="#" >2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">6</a></li>
+          <li><a href="#">7</a></li>
+          <li><a href="#">8</a></li>
+        </ul>
+      </div>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('.container2').initPagination({element: '.element-list li', pagination: '.pagination-list a'});
+        });
+      </script>
+
+      <h2>3. Pagination with prev/next and page buttons</h2>
+      <div class="container3">
+        <div class="holder">
+          <div class="prev-next-holder">
+            <a class="prev disabled" href="#">&lt;&lt;</a>
+          </div>
+          <ul class="element-list">
+            <li class="active">Page 1</li>
+            <li>Page 2</li>
+            <li>Page 3</li>
+            <li>Page 4</li>
+            <li>Page 5</li>
+            <li>Page 6</li>
+            <li>Page 7</li>
+            <li>Page 8</li>
+          </ul>
+          <div class="prev-next-holder">
+            <a class="next" href="#">&gt;&gt;</a>
+          </div>
+        </div>
+        <ul class="pagination-list">
+          <li><a class="current" href="#">1</a></li>
+          <li><a href="#" >2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">6</a></li>
+          <li><a href="#">7</a></li>
+          <li><a href="#">8</a></li>
+        </ul>
+      </div>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('.container3').initPagination({element: '.element-list li', pagination: '.pagination-list a'});
+        });
+      </script>
+      
+      <h2>4. Multiple Items per Page</h2>
+      <div class="container4">
+        <div class="holder">
+          <div class="prev-next-holder">
+            <a class="prev disabled" href="#">&lt;&lt;</a>
+          </div>
+          <ul class="element-list multi-item-list">
+            <li class="single active">Element 1</li>
+            <li class="active">Element 2</li>
+            <li class="single">Element 3</li>
+            <li>Element 4</li>
+            <li class="single">Element 5</li>
+            <li>Element 6</li>
+            <li class="single">Element 7</li>
+            <li>Element 8</li>
+          </ul>
+          <div class="prev-next-holder">
+            <a class="next" href="#">&gt;&gt;</a>
+          </div>
+        </div>
+        <ul class="pagination-list">
+          <li><a class="current" href="#">1</a></li>
+          <li><a href="#" >2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+        </ul>
+      </div>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('.container4').initPagination({elementPerPage: 2, element: '.element-list li', pagination: '.pagination-list a'});
+        });
+      </script>
+      
+      <h2>5. Circular Pagination</h2>
+      <div class="container5">
+        <div class="holder">
+          <div class="prev-next-holder">
+            <a class="prev" href="#">&lt;&lt;</a>
+          </div>
+          <ul class="element-list">
+            <li class="active">Page 1</li>
+            <li>Page 2</li>
+            <li>Page 3</li>
+            <li>Page 4</li>
+            <li>Page 5</li>
+            <li>Page 6</li>
+            <li>Page 7</li>
+            <li>Page 8</li>
+          </ul>
+          <div class="prev-next-holder">
+            <a class="next" href="#">&gt;&gt;</a>
+          </div>
+        </div>
+        <ul class="pagination-list">
+          <li><a class="current" href="#">1</a></li>
+          <li><a href="#" >2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">6</a></li>
+          <li><a href="#">7</a></li>
+          <li><a href="#">8</a></li>
+        </ul>
+      </div>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('.container5').initPagination({circle: true, element: '.element-list li', pagination: '.pagination-list a'});
+        });
+      </script>
+      
+      <h2>6. Auto Page Switching</h2>
+      <div class="container6">
+        <div class="holder">
+          <div class="prev-next-holder">
+            <a class="prev" href="#">&lt;&lt;</a>
+          </div>
+          <ul class="element-list">
+            <li class="active">Page 1</li>
+            <li>Page 2</li>
+            <li>Page 3</li>
+            <li>Page 4</li>
+            <li>Page 5</li>
+            <li>Page 6</li>
+            <li>Page 7</li>
+            <li>Page 8</li>
+          </ul>
+          <div class="prev-next-holder">
+            <a class="next" href="#">&gt;&gt;</a>
+          </div>
+        </div>
+        <ul class="pagination-list">
+          <li><a class="current" href="#">1</a></li>
+          <li><a href="#" >2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">6</a></li>
+          <li><a href="#">7</a></li>
+          <li><a href="#">8</a></li>
+        </ul>
+      </div>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('.container6').initPagination({
+            circle: true, 
+            auto: true, 
+            timeout: 3000, 
+            element: '.element-list li', 
+            pagination: '.pagination-list a'
+          });
+        });
+      </script>
+      
+      <h2>7. Pagination with Callback</h2>
+      <div class="container7">
+        <div class="holder">
+          <div class="prev-next-holder">
+            <a class="prev" href="#">&lt;&lt;</a>
+          </div>
+          <ul class="element-list">
+            <li id="page1" class="active">Page 1</li>
+            <li id="page2">Page 2</li>
+            <li id="page3">Page 3</li>
+            <li id="page4">Page 4</li>
+            <li id="page5">Page 5</li>
+            <li id="page6">Page 6</li>
+            <li id="page7">Page 7</li>
+            <li id="page8">Page 8</li>
+          </ul>
+          <div class="prev-next-holder">
+            <a class="next" href="#">&gt;&gt;</a>
+          </div>
+        </div>
+        <ul class="pagination-list">
+          <li><a class="current" href="#">1</a></li>
+          <li><a href="#" >2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">6</a></li>
+          <li><a href="#">7</a></li>
+          <li><a href="#">8</a></li>
+        </ul>
+      </div>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('.container7').initPagination({
+            circle: true, 
+            auto: true, 
+            timeout: 5000, 
+            element: '.element-list li', 
+            pagination: '.pagination-list a',
+            callback: function(eventType, index, activeElement) {
+              console.log('Event Type: ' + eventType + 
+                          ', Index: ' + index + 
+                          ', Active Element ID: ' + activeElement.prop('id'));
+            }
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html> 
